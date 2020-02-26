@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ROBOGRID</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/animations.css">
+	<link rel="icon" href="assets/img/eye.png">
+	
+</head>
+<body>
+
+	<div class="container">
+		<div id="title1" class="title">
+			<span>R</span>
+			<span>O</span>
+			<span>B</span>
+			<span>O</span>
+			<span>G</span>
+			<span>R</span>
+			<span>I</span>
+			<span>D</span>
+		</div>
+		<div class="background">
+			<div id="head">
+				<div id="eyes">
+					<div class="eye" id="left-eye"></div>
+					<div class="eye" id="right-eye"></div>
+				</div>
+				<div id="mouth">
+					<div id="lip">
+						
+					</div>
+					<!-- <div class="tooth"></div>
+					<div class="tooth"></div>
+					<div class="tooth"></div>
+					<div class="tooth"></div> -->
+				</div>
+			</div>
+			<div id="neck"></div>
+			<div id="body">
+				<div id="heart">
+					<img src="assets/img/heart.png">
+				</div>
+			</div>
+			<div class="arm" id="left-arm"></div>
+			<div class="arm" id="right-arm"></div>
+			<div class="hand" id="left-hand"></div>
+			<div class="hand" id="right-hand"></div>
+			<div class="leg" id="left-leg"></div>
+			<div class="leg" id="right-leg"></div>
+			<div class="foot" id="left-foot"></div>
+			<div class="foot" id="right-foot"></div>
+		</div>
+		<div id="title2" class="title">
+			<span>R</span>
+			<span>O</span>
+			<span>B</span>
+			<span>O</span>
+			<span>G</span>
+			<span>R</span>
+			<span>I</span>
+			<span>D</span>
+		</div>
+		<div id="panel">
+			<form onsubmit="return false">
+				<fieldset>
+					<legend>Actions:</legend>
+					<label>
+						<input type="checkbox" name="walk" id="walk">March
+					</label>
+					<label>
+						<input type="checkbox" name="blink" id="blink">Blink
+					</label>
+					<label>
+						<input type="checkbox" name="beat" id="beat">Beat
+					</label>
+					<label>
+						<input type="checkbox" name="eat" id="eat">Eat
+					</label>
+					<label>
+						<input type="checkbox" name="greet" id="greet">Greet
+					</label>
+					<label>
+						<input type="checkbox" name="jump" id="jump">Jump
+					</label>
+					<label>
+						<input type="checkbox" name="dance" id="dance">Dance
+					</label>
+				</fieldset>
+				
+				<fieldset>
+					<legend>Edit:</legend>
+					<label>Enter a color:
+						<input type="color" name="color" id="color">
+					</label>
+				</fieldset>
+				
+			</form>
+			
+		</div>
+
+	</div>
+	<div id="audio"></div>
+	
+	<script src="assets/js/main.js"></script>
+</body>
+</html>

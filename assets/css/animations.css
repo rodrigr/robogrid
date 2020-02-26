@@ -1,0 +1,243 @@
+@keyframes zoomInOut {
+	from, to{
+		transform: scale(1.5);
+	}
+	50%{
+		transform: scale(.5);
+	}
+	
+}
+
+.zoomInOut{
+	animation: zoomInOut 1.5s infinite;
+}
+
+@keyframes blink {
+	from,to{
+		transform: scale(1);
+	}
+	50%{
+		transform: scaleY(0);
+	}
+}
+
+.blink{
+	animation: blink .5s infinite;
+}
+
+@keyframes upAndDown {
+	from{
+		transform: translateY(0);
+	}
+	25%{
+		transform: translateY(-10px);
+	}
+	50%,to{
+		transform: translateY(10px);
+	}
+}
+
+.upAndDown{
+	animation: upAndDown 1s infinite;
+}
+
+.upAndDown.delay{
+	animation-delay: .5s;
+}
+
+@keyframes shrinkUp{
+	from,to{
+		transform: scaleY(1)
+	}
+	50%{
+		transform: scaleY(.2);
+		transform-origin: top;
+	}
+}
+
+.shrinkUp{
+	animation: shrinkUp 1s infinite;
+}
+
+@keyframes leftLift{
+	from,to{
+		transform: rotate(0deg);
+	}
+	50%{
+		transform: rotate(150deg);
+		transform-origin: center top;
+	}
+}
+
+.leftLift{
+	animation: leftLift 1.5s infinite;
+}
+
+@keyframes rightLift{
+	from,to{
+		transform: rotate(0deg);
+	}
+	50%{
+		transform: rotate(-150deg);
+		transform-origin: center top;
+	}
+}
+
+.rightLift{
+	animation: rightLift 1.5s infinite;
+}
+
+.leftLift.arm::after,.rightLift.arm::after{
+	content: '';
+	display: block;
+	background-image: url("../img/robo-texture.png");
+	background-size: cover;
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+	transform: translateY(175px);
+}
+
+.leftLift.leg::after,.rightLift.leg::after{
+	content: '';
+	display: block;
+	background-image: url("../img/robo-texture.png");
+	background-size: cover;
+	border-radius: 2em;
+	width: 70px;
+	height: 35px;
+	transform: translateY(175px);
+}
+
+.leftLift.leg::after{
+	transform: translate(-35px,175px);
+}
+
+@keyframes rotate{
+	from{
+		transform: rotate(0);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+.rotate{
+	animation: rotate 1s infinite;
+}
+
+.hide{
+	display: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 1.5s;
+  animation-fill-mode: both;
+  animation-delay: .5s;
+}
+
+@keyframes headEntrance {
+	from{
+		opacity: 0;
+		transform: translate3d(0,535px,0);
+	}
+	to{
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
+
+.headEntrance{
+	animation: headEntrance 1.7s;
+	animation-fill-mode: both;
+  	animation-delay: .5s;
+}
+
+@keyframes leftEntrance{
+	from{
+		opacity: 0;
+		transform: translate3d(-500px,0,0);
+	}
+	to{
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
+
+.leftEntrance{
+	animation: leftEntrance 1.5s;
+	animation-fill-mode: both;
+  	animation-delay: .5s;
+}
+
+@keyframes rightEntrance{
+	from{
+		opacity: 0;
+		transform: translate3d(500px,0,0);
+	}
+	to{
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
+
+.rightEntrance{
+	animation: rightEntrance 1.5s;
+	animation-fill-mode: both;
+  	animation-delay: .5s;
+}
+
+@keyframes legEntrance{
+	from{
+		opacity: 0;
+		transform: scaleY(0);
+	}
+	to{
+		opacity: 1;
+		transform: scaleY(1);
+	}
+}
+
+.legEntrance{
+	animation: legEntrance 1.5s;
+	animation-fill-mode: both;
+  	animation-delay: 2s;
+  	transform-origin: top;
+}
+
+@keyframes feetEntrance{
+	from{
+		opacity: 0;
+		transform: scaleX(0);
+	}
+	to{
+		opacity: 1;
+		transform: scaleX(1);
+	}
+}
+
+.feetEntrance{
+	animation: feetEntrance 1.5s;
+	animation-fill-mode: both;
+  	animation-delay: 3.5s;
+}
+
+#left-foot.feetEntrance{
+	transform-origin: right;
+}
+
+#right-foot.feetEntrance{
+	transform-origin: left;
+}

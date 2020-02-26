@@ -1,0 +1,183 @@
+body{
+	margin: 0;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.container{
+	display: grid;
+	grid-template-rows: 10fr 2fr;
+	grid-template-areas: 
+		"titleOne background titleTwo"
+		"titleOne panel titleTwo";
+	height: 100vh;
+}
+
+.title{
+	width: 10vw;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.title span{
+	font-size: 3.5em;
+	font-weight: bold;
+	
+}
+
+
+#title1{
+	grid-area: titleOne;
+}
+#title2{
+	grid-area: titleTwo;
+}
+#panel{
+	width: 80vw;
+	background: steelblue;
+	padding: .5em 0;
+	grid-area: panel;
+}
+
+#panel form{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+.background {
+	width: 80vw;
+	
+	background: #B7B7B7;
+	padding: 1em 0;
+	grid-area: background;
+	display: grid;
+	grid-column-gap: 5px;
+	grid-template-columns: repeat(15,35px);
+  	grid-template-rows: repeat(15,35px);
+	grid-template-areas: 
+		". . . . . . head head head . . . . . ."
+		". . . . . . head head head . . . . . ."
+		". . . . . . head head head . . . . . ."
+		
+		". . . . . . . neck . . . . . . ."
+		". . . . . body body body body body . . . . ."
+		". . . . leftArm body body body body body rightArm . . . ."
+		
+		
+		". . . . leftArm body body body body body rightArm . . . ."
+		". . . . leftArm body body body body body rightArm . . . ."
+		". . . . leftArm body body body body body rightArm . . . ."
+		". . . . leftArm . leftLeg . rightLeg . rightArm . . . ."
+		". . . . leftHand . leftLeg . rightLeg . rightHand . . . ."
+		". . . . . . leftLeg . rightLeg . . . . . ."
+		". . . . . . leftLeg . rightLeg . . . . . ."
+		
+		
+		". . . . . . leftLeg . rightLeg . . . . . ."
+		". . . . . leftFoot leftFoot . rightFoot rightFoot . . . . .";
+	justify-content: center;
+
+}
+
+.background>div{
+	background-image: url("../img/robo-texture.png");
+	background-size: cover;
+	position: relative;
+}
+
+#head{
+	border-radius: 35%;
+	grid-area: head;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	z-index: 1;
+}
+#eyes{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+}
+.eye{
+	background-image: url(../img/eye.png);
+	background-size: cover;
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+}
+#mouth{
+	background: black;
+	border-radius: 75% 75% 50% 50% / 25% 25% 50% 50%;
+	width: 35px;
+	height: 20px;
+	align-self: center;
+	
+}
+#lip{
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+	background: gray;
+}
+#neck{	
+	z-index: 0;
+	grid-area: neck;
+}
+#body{	
+	border-radius: 40%;
+	grid-area: body;
+	display: flex;
+	padding: 1em;
+	justify-content: flex-end;
+}
+#heart img{
+	width: 75px;
+}
+#heart{
+	display: none;
+
+}
+#heart.zoomInOut{
+	display: block;
+}
+.arm{
+	border-radius: 2em;
+}
+#left-arm{
+	grid-area: leftArm;
+}
+#right-arm{
+	grid-area: rightArm;
+}
+.hand{
+	border-radius: 50%;
+}
+#left-hand{
+	grid-area: leftHand;
+}
+#right-hand{
+	grid-area: rightHand;
+}
+.leg{
+	border-radius: 2em;
+}
+#left-leg{
+	grid-area: leftLeg;
+}
+#right-leg{
+	grid-area: rightLeg;
+}
+.foot{
+	border-radius: 2em;
+}
+#left-foot{
+	grid-area: leftFoot;
+}
+#right-foot{
+	grid-area: rightFoot;
+}
+
+
+
+		
