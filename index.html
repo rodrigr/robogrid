@@ -9,7 +9,7 @@
 	<link rel="icon" href="assets/img/eye.png">
 	
 </head>
-<body>
+<body scroll="no" style="overflow: hidden">
 
 	<div class="container">
 		<div id="title1" class="title">
@@ -63,27 +63,31 @@
 			<form onsubmit="return false">
 				<fieldset>
 					<legend>Actions:</legend>
-					<label>
-						<input type="checkbox" name="walk" id="walk">March
-					</label>
-					<label>
-						<input type="checkbox" name="blink" id="blink">Blink
-					</label>
-					<label>
-						<input type="checkbox" name="beat" id="beat">Beat
-					</label>
-					<label>
-						<input type="checkbox" name="eat" id="eat">Eat
-					</label>
-					<label>
-						<input type="checkbox" name="greet" id="greet">Greet
-					</label>
-					<label>
-						<input type="checkbox" name="jump" id="jump">Jump
-					</label>
-					<label>
-						<input type="checkbox" name="dance" id="dance">Dance
-					</label>
+
+					<div id="actions">
+						<input type="checkbox" name="walk" id="walk">
+						<label for=walk><span></span>  March </label>
+						
+						<input type="checkbox" name="blink" id="blink">
+						<label for=blink><span></span>Blink</label>
+		
+						<input type="checkbox" name="beat" id="beat">
+						<label for="beat"><span></span>Beat</label>
+
+						<input type="checkbox" name="eat" id="eat">
+						<label for="eat"><span></span>Eat</label>
+						
+						<input type="checkbox" name="greet" id="greet">
+						<label for="greet"><span></span>Greet</label>
+						
+						<input type="checkbox" name="jump" id="jump">
+						<label for="jump"><span></span>Jump</label>
+
+						<input type="checkbox" name="dance" id="dance">
+						<label for="dance"><span></span>Dance</label>
+					</div>
+
+					
 				</fieldset>
 				
 				<fieldset>

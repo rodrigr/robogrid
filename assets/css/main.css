@@ -2,12 +2,11 @@ body{
 	margin: 0;
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
 .container{
 	display: grid;
-	grid-template-rows: 10fr 2fr;
 	grid-template-areas: 
-		"titleOne background titleTwo"
-		"titleOne panel titleTwo";
+		"titleOne background titleTwo";
 	height: 100vh;
 }
 
@@ -15,14 +14,23 @@ body{
 	width: 10vw;
 	display: flex;
 	flex-flow: column nowrap;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
+	background-image: url("../img/robotic.jpg");
+	background-size: cover;
 }
 
 .title span{
-	font-size: 3.5em;
+	font-size: 3.4em;
+	color: lightsteelblue;
 	font-weight: bold;
-	
+	border-radius: 10px;
+	text-align: center;
+	width: 85%;
+	box-sizing: border-box;
+	background-image: url("../img/cube.jpg");
+	background-position: center;
+	background-size: 100% 100%;
 }
 
 
@@ -33,21 +41,64 @@ body{
 	grid-area: titleTwo;
 }
 #panel{
-	width: 80vw;
-	background: steelblue;
-	padding: .5em 0;
-	grid-area: panel;
+	color: lightsteelblue;
+	position: absolute;
+	background: url("../img/metalic.jpg");
+	background-size: 170% 120%;
+	background-position: center;
+	padding: 1em;
+	right: 12%;
+	top: 10%;
+	border-radius: 15px;
 }
 
 #panel form{
+	height: inherit;
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: column wrap;
 	justify-content: space-around;
 }
+
+#panel fieldset{
+	border: 0;
+	justify-content: space-around;
+}
+
+#actions{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+
+#panel legend{
+	text-align: center;
+}
+
+#panel input[type=checkbox]{
+	display: none;
+}
+
+#panel input[type="checkbox"] + label span{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background: gray;
+	border-radius: 50%;
+	margin-right: 3px;
+}
+
+#panel input[type="checkbox"]:checked + label span{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background-image: url("../img/eye.png");
+	background-size: contain;
+}
+
 .background {
 	width: 80vw;
-	
-	background: #B7B7B7;
+	background-image: url("../img/spaceship.jpg");
+	background-size: cover;
 	padding: 1em 0;
 	grid-area: background;
 	display: grid;
@@ -76,6 +127,7 @@ body{
 		". . . . . . leftLeg . rightLeg . . . . . ."
 		". . . . . leftFoot leftFoot . rightFoot rightFoot . . . . .";
 	justify-content: center;
+	align-content: center;
 
 }
 
