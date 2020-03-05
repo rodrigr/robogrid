@@ -13,13 +13,40 @@ const legs = document.querySelectorAll(".leg")
 const leftFoot = document.querySelector("#left-foot")
 const rightFoot = document.querySelector("#right-foot")
 const feet = document.querySelectorAll(".foot")
+const colorWheel = document.querySelector("#color-wheel")
 
-function paint(){
-	document.querySelectorAll('.background>div').forEach(div => div.style.backgroundColor = document.querySelector('input[name="color"]').value)
+function paint(event){
+
+	if(event){
+		document.querySelector("#palette div.selected").classList.remove("selected")
+		event.target.classList.add("selected")
+	}
+	
+	let color = document.querySelector("#palette div.selected").style.backgroundColor
+	colorWheel.dataset.color = color
+
+	document.querySelectorAll('.background>div')
+		.forEach(div => div.style.backgroundColor = colorWheel.dataset.color)
 	
 }
 
 paint()
+
+function palette(){
+	let actions = document.querySelector("#actions")
+	let palette = document.querySelector("#palette")
+	if(colorWheel.checked){
+		actions.classList.add("hide")
+		actions.classList.remove("show")
+		palette.classList.remove("hide")
+		palette.classList.add("show")
+	} else{
+		actions.classList.remove("hide")
+		actions.classList.add("show")
+		palette.classList.add("hide")
+		palette.classList.remove("show")
+	}
+}
 
 function walk(){
 	document.querySelectorAll(".arm,.hand,.leg,.foot").forEach(e => e.classList.add("upAndDown"))
@@ -114,7 +141,11 @@ Event Handling
 
 
 
-document.querySelector('#color').addEventListener("change",paint)
+document.querySelector('#color-wheel').addEventListener("change",palette)
+
+document.querySelectorAll("#palette>div").forEach(e => e.addEventListener("click",paint))
+
+document.querySelector("#palette .close").addEventListener("click", () => colorWheel.click())
 
 document.querySelector("#walk").addEventListener("change",event => event.target.checked ? walk() : stop(["upAndDown","delay"]))
 

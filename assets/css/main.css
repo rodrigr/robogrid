@@ -3,17 +3,22 @@ body{
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
+.hide{
+	display: none;
+}
+
 .container{
 	display: grid;
-	grid-template-areas: 
-		"titleOne background titleTwo";
+	grid-template: 
+		"titleOne" 2fr
+		"background" 15fr;
 	height: 100vh;
 }
 
 .title{
-	width: 10vw;
+	width: 100vw;
 	display: flex;
-	flex-flow: column nowrap;
+	flex-flow: row wrap;
 	justify-content: space-around;
 	align-items: center;
 	background-image: url("../img/robotic.jpg");
@@ -21,57 +26,36 @@ body{
 }
 
 .title span{
-	font-size: 3.4em;
+	font-size: 2.5em;
 	color: lightsteelblue;
 	font-weight: bold;
 	border-radius: 10px;
 	text-align: center;
-	width: 85%;
+	width: 10%;
 	box-sizing: border-box;
 	background-image: url("../img/cube.jpg");
 	background-position: center;
 	background-size: 100% 100%;
 }
 
-
 #title1{
 	grid-area: titleOne;
 }
+
 #title2{
-	grid-area: titleTwo;
+	display: none;
 }
+
 #panel{
-	color: lightsteelblue;
-	position: absolute;
-	background: url("../img/metalic.jpg");
-	background-size: 170% 120%;
-	background-position: center;
-	padding: 1em;
-	right: 12%;
-	top: 10%;
-	border-radius: 15px;
-}
-
-#panel form{
-	height: inherit;
+	position: fixed;
+	bottom: 0;
 	display: flex;
-	flex-flow: column wrap;
+	width: 100vw;
 	justify-content: space-around;
 }
 
-#panel fieldset{
-	border: 0;
-	justify-content: space-around;
-}
-
-#actions{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-}
-
-
-#panel legend{
-	text-align: center;
+#panel form, #actions.show{
+	display: contents;
 }
 
 #panel input[type=checkbox]{
@@ -80,52 +64,117 @@ body{
 
 #panel input[type="checkbox"] + label span{
 	display: inline-block;
-	width: 15px;
-	height: 15px;
-	background: gray;
+	width: 35px;
+	height: 35px;
+	background-color: gray;
 	border-radius: 50%;
-	margin-right: 3px;
+	opacity: .7;
+	cursor: pointer;
 }
 
 #panel input[type="checkbox"]:checked + label span{
-	display: inline-block;
-	width: 15px;
-	height: 15px;
-	background-image: url("../img/eye.png");
+	opacity: 1;
+	background-color: red; 
+}
+
+#palette.show{
+	display: contents;
+}
+
+#palette .close{
+	display: flex;
+	align-items: center;
+	order: 99;
+}
+
+#palette>div{
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#palette>div.selected{
+	border: 2px dashed gray;
+}
+
+#palette .close{
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	cursor: pointer;
+}
+
+#walk + label span{
+	background-image: url("../img/walking.png");
+	background-size: contain;
+}
+
+#beat + label span{
+	background-image: url("../img/beat.png");
+	background-size: contain;
+}
+
+#greet + label span{
+	background-image: url("../img/greet.png");
+	background-size: contain;
+}
+
+#dance + label span{
+	background-image: url("../img/dance.png");
+	background-size: contain;
+}
+
+#eat + label span{
+	background-image: url("../img/eat.png");
+	background-size: contain;
+}
+
+#blink + label span{
+	background-image: url("../img/blink.png");
+	background-size: contain;
+}
+
+#jump + label span{
+	background-image: url("../img/jump.png");
+	background-size: contain;
+}
+
+#color-wheel + label span{
+	background-image: url("../img/color-wheel.png");
 	background-size: contain;
 }
 
 .background {
-	width: 80vw;
 	background-image: url("../img/spaceship.jpg");
 	background-size: cover;
 	padding: 1em 0;
 	grid-area: background;
 	display: grid;
 	grid-column-gap: 5px;
-	grid-template-columns: repeat(15,35px);
-  	grid-template-rows: repeat(15,35px);
+	grid-template-columns: repeat(9,30px);
+  	grid-template-rows: repeat(15,30px);
 	grid-template-areas: 
-		". . . . . . head head head . . . . . ."
-		". . . . . . head head head . . . . . ."
-		". . . . . . head head head . . . . . ."
+		"   . . . head head head . . .   "
+		"   . . . head head head . . .   "
+		"   . . . head head head . . .   "
 		
-		". . . . . . . neck . . . . . . ."
-		". . . . . body body body body body . . . . ."
-		". . . . leftArm body body body body body rightArm . . . ."
-		
-		
-		". . . . leftArm body body body body body rightArm . . . ."
-		". . . . leftArm body body body body body rightArm . . . ."
-		". . . . leftArm body body body body body rightArm . . . ."
-		". . . . leftArm . leftLeg . rightLeg . rightArm . . . ."
-		". . . . leftHand . leftLeg . rightLeg . rightHand . . . ."
-		". . . . . . leftLeg . rightLeg . . . . . ."
-		". . . . . . leftLeg . rightLeg . . . . . ."
+		"   . . . . neck . . . .   "
+		"   . . body body body body body . .   "
+		"   . leftArm body body body body body rightArm .   "
 		
 		
-		". . . . . . leftLeg . rightLeg . . . . . ."
-		". . . . . leftFoot leftFoot . rightFoot rightFoot . . . . .";
+		"   . leftArm body body body body body rightArm .   "
+		"   . leftArm body body body body body rightArm .   "
+		"   . leftArm body body body body body rightArm .   "
+		"   . leftArm . leftLeg . rightLeg . rightArm .   "
+		"   . leftHand . leftLeg . rightLeg . rightHand .   "
+		"   . . . leftLeg . rightLeg . . .   "
+		"   . . . leftLeg . rightLeg . . .   "
+		
+		
+		"   . . . leftLeg . rightLeg . . .   "
+		"   . . leftFoot leftFoot . rightFoot rightFoot . .   ";
 	justify-content: center;
 	align-content: center;
 
@@ -155,8 +204,8 @@ body{
 	background-image: url(../img/eye.png);
 	background-size: cover;
 	border-radius: 50%;
-	width: 35px;
-	height: 35px;
+	width: 30px;
+	height: 30px;
 }
 #mouth{
 	background: black;

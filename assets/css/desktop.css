@@ -1,0 +1,106 @@
+@media only screen and (min-width: 992px){
+	.container{
+		display: grid;
+		grid-template: 
+			"titleOne background titleTwo" auto / 1fr 8fr 1fr;
+	}
+
+	.title{
+		width: 10vw;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-around;
+		align-items: center;
+		background-image: url("../img/robotic.jpg");
+		background-size: cover;
+	}
+
+	#title2{
+		display: flex;
+		grid-area: titleTwo;
+	}
+
+	.title span{
+		font-size: 3.4em;
+		color: lightsteelblue;
+		font-weight: bold;
+		border-radius: 10px;
+		text-align: center;
+		width: 85%;
+		box-sizing: border-box;
+		background-image: url("../img/cube.jpg");
+		background-position: center;
+		background-size: 100% 100%;
+	}
+
+	.background{
+		grid-template-columns: repeat(9,35px);
+  		grid-template-rows: repeat(15,35px);
+	}
+
+	#panel{
+		position: absolute;
+		width: auto;
+		right: 12%;
+		top: 10%;
+		bottom: auto;
+		background: rgba(0,0,0,.7);
+		padding: 1.5em;
+		border-radius: 15px;
+	}
+
+
+	#actions.show, #palette.show{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 10px;
+		
+	}
+
+	#panel input[type="checkbox"] + label span{
+		width: 50px;
+		height: 50px;
+	}
+
+	#palette>div{
+		width: 50px;
+		height: 50px;
+	}
+
+	#palette .close{
+		font-size: 1.5em;
+		grid-column: 1 / span 2;
+	}
+
+	.eye{
+		width: 35px;
+		height: 35px;
+	}
+
+	.leftLift.arm::after,.rightLift.arm::after{
+		content: '';
+		display: block;
+		background-image: url("../img/robo-texture.png");
+		background-size: cover;
+		border-radius: 50%;
+		width: 35px;
+		height: 35px;
+		transform: translateY(175px);
+	}
+
+	.leftLift.leg::after,.rightLift.leg::after{
+		content: '';
+		display: block;
+		background-image: url("../img/robo-texture.png");
+		background-size: cover;
+		border-radius: 2em;
+		width: 70px;
+		height: 35px;
+		transform: translateY(175px);
+	}
+
+	.leftLift.leg::after{
+		transform: translate(-35px,175px);
+	}
+
+}

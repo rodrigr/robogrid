@@ -93,9 +93,9 @@
 	background-image: url("../img/robo-texture.png");
 	background-size: cover;
 	border-radius: 50%;
-	width: 35px;
-	height: 35px;
-	transform: translateY(175px);
+	width: 30px;
+	height: 30px;
+	transform: translateY(150px);
 }
 
 .leftLift.leg::after,.rightLift.leg::after{
@@ -104,13 +104,13 @@
 	background-image: url("../img/robo-texture.png");
 	background-size: cover;
 	border-radius: 2em;
-	width: 70px;
-	height: 35px;
-	transform: translateY(175px);
+	width: 60px;
+	height: 30px;
+	transform: translateY(150px);
 }
 
 .leftLift.leg::after{
-	transform: translate(-35px,175px);
+	transform: translate(-30px,150px);
 }
 
 @keyframes rotate{
