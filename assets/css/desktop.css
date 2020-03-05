@@ -41,6 +41,7 @@
 	#panel{
 		position: absolute;
 		width: auto;
+		height: auto;
 		right: 12%;
 		top: 10%;
 		bottom: auto;

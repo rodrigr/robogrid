@@ -48,11 +48,13 @@ body{
 
 #panel{
 	position: fixed;
-	bottom: .5em;
+	right: .5em;
 	display: flex;
-	flex-flow: row wrap;
-	width: 100vw;
-	justify-content: space-around;
+	flex-flow: column wrap;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
 }
 
 #panel form, #actions.show{
@@ -65,8 +67,8 @@ body{
 
 #panel input[type="checkbox"] + label span{
 	display: inline-block;
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	background-color: gray;
 	border-radius: 50%;
 	opacity: .7;
@@ -89,8 +91,8 @@ body{
 }
 
 #palette>div{
-	width: 45px;
-	height: 45px;
+	width: 35px;
+	height: 35px;
 	margin: 0 .1em;
 	border-radius: 50%;
 	cursor: pointer;
@@ -149,139 +151,7 @@ body{
 	background-size: contain;
 }
 
-.background {
-	background-image: url("../img/spaceship.jpg");
-	background-size: cover;
-	padding: 1em 0;
-	grid-area: background;
-	display: grid;
-	grid-column-gap: 5px;
-	grid-template-columns: repeat(9,30px);
-  	grid-template-rows: repeat(15,30px);
-	grid-template-areas: 
-		"   . . . head head head . . .   "
-		"   . . . head head head . . .   "
-		"   . . . head head head . . .   "
-		
-		"   . . . . neck . . . .   "
-		"   . . body body body body body . .   "
-		"   . leftArm body body body body body rightArm .   "
-		
-		
-		"   . leftArm body body body body body rightArm .   "
-		"   . leftArm body body body body body rightArm .   "
-		"   . leftArm body body body body body rightArm .   "
-		"   . leftArm . leftLeg . rightLeg . rightArm .   "
-		"   . leftHand . leftLeg . rightLeg . rightHand .   "
-		"   . . . leftLeg . rightLeg . . .   "
-		"   . . . leftLeg . rightLeg . . .   "
-		
-		
-		"   . . . leftLeg . rightLeg . . .   "
-		"   . . leftFoot leftFoot . rightFoot rightFoot . .   ";
-	justify-content: center;
-	align-content: center;
 
-}
-
-.background>div{
-	background-image: url("../img/robo-texture.png");
-	background-size: cover;
-	position: relative;
-}
-
-#head{
-	border-radius: 35%;
-	grid-area: head;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	z-index: 1;
-}
-#eyes{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-
-}
-.eye{
-	background-image: url(../img/eye.png);
-	background-size: cover;
-	border-radius: 50%;
-	width: 30px;
-	height: 30px;
-}
-#mouth{
-	background: black;
-	border-radius: 75% 75% 50% 50% / 25% 25% 50% 50%;
-	width: 35px;
-	height: 20px;
-	align-self: center;
-	
-}
-#lip{
-	width: inherit;
-	height: inherit;
-	border-radius: inherit;
-	background: gray;
-}
-#neck{	
-	z-index: 0;
-	grid-area: neck;
-}
-#body{	
-	border-radius: 40%;
-	grid-area: body;
-	display: flex;
-	padding: 1em;
-	justify-content: flex-end;
-}
-#heart img{
-	width: 75px;
-}
-#heart{
-	display: none;
-
-}
-#heart.zoomInOut{
-	display: block;
-}
-.arm{
-	border-radius: 2em;
-}
-#left-arm{
-	grid-area: leftArm;
-}
-#right-arm{
-	grid-area: rightArm;
-}
-.hand{
-	border-radius: 50%;
-}
-#left-hand{
-	grid-area: leftHand;
-}
-#right-hand{
-	grid-area: rightHand;
-}
-.leg{
-	border-radius: 2em;
-}
-#left-leg{
-	grid-area: leftLeg;
-}
-#right-leg{
-	grid-area: rightLeg;
-}
-.foot{
-	border-radius: 2em;
-}
-#left-foot{
-	grid-area: leftFoot;
-}
-#right-foot{
-	grid-area: rightFoot;
-}
 
 
 
