@@ -70,6 +70,8 @@
 	#palette .close{
 		font-size: 1.5em;
 		grid-column: 1 / span 2;
+		display: inline-block;
+		order: initial;
 	}
 
 	.eye{
