@@ -133,6 +133,77 @@ function entrance(){
 
 entrance()
 
+let styles = []
+
+function reorder(backwards){
+
+	let desktop = window.innerWidth >= 992
+
+	let title = document.querySelector("#title1")
+	let parentSize = !desktop ? title.offsetWidth : title.offsetHeight
+	
+	let word = backwards ? ["R","O","B","O","G","R","I","D"] : ["BY","R","O","D","R","I","G","R"]
+	
+	styles.forEach(e => document.querySelector("head").removeChild(e))
+	document.querySelectorAll("#title1 span").forEach(e => e.className = "")
+	styles = []
+
+	let i = 1
+	let j = title.children.length
+
+	let interval = setInterval(frame,700,true)
+	let interval2
+
+	function frame(first){
+
+		let childI = title.children[i - 1]
+		let childIPos = !desktop ? childI.offsetLeft + childI.offsetWidth / 2 : childI.offsetTop + childI.offsetHeight / 2
+		let childJ = title.children[j - 1]
+		let childJPos = !desktop ? childJ.offsetLeft + childJ.offsetWidth / 2 : childJ.offsetTop + childJ.offsetHeight / 2
+
+		if(i<j){
+
+			let style = document.createElement('STYLE')
+
+			let fromI = first ? `transform:translate${!desktop ? "X" : "Y"}(0)` : `transform:translate${!desktop ? "X" : "Y"}(${parentSize/2 - childIPos}px)`
+			let toI = first ? `transform:translate${!desktop ? "X" : "Y"}(${parentSize/2 - childIPos}px)` : `transform:translate${!desktop ? "X" : "Y"}(0)`
+			style.innerText = `@keyframes sort${i + (first ? "A" : "B")}{from{${fromI}}to{${toI}}}`
+			style.innerText += `.sort${i + (first ? "A" : "B")}{animation: sort${i + (first ? "A" : "B")} .7s forwards}`
+
+			let fromJ = first ? `transform:translate${!desktop ? "X" : "Y"}(0)` : `transform:translate${!desktop ? "X" : "Y"}(${parentSize/2 - childJPos}px)`
+			let toJ = first ? `transform:translate${!desktop ? "X" : "Y"}(${parentSize/2 - childJPos}px)` : `transform:translate${!desktop ? "X" : "Y"}(0)`
+			style.innerText += `@keyframes sort${j + (first ? "A" : "B")}{from{${fromJ}}to{${toJ}}}`
+			style.innerText += `.sort${j + (first ? "A" : "B")}{animation: sort${j + (first ? "A" : "B")} .7s forwards}`
+
+			document.querySelector("head").appendChild(style)
+			styles.push(style)
+
+			childI.classList.add(`sort${i + (first ? "A" : "B")}`)
+			childJ.classList.add(`sort${j + (first ? "A" : "B")}`)
+
+			if(!first){
+				childI.innerText = word[i - 1]
+				childJ.innerText = word[j - 1]
+			}
+			
+			i++
+			j--
+		}else{
+			clearInterval(first ? interval : interval2)
+			if(first){
+				i = 1
+				j = title.children.length
+				interval2 = setInterval(frame,700,false)
+			}else{
+				if(!backwards){
+					reorder(true)
+				}
+			}
+			
+		}
+	}
+}
+
 /*=================
 ===================
 Event Handling
@@ -161,4 +232,7 @@ document.querySelector("#jump").addEventListener("change", event => event.target
 
 document.querySelector("#dance").addEventListener("change", event => event.target.checked ? dance() : stop(["leftLift","rightLift","hide"]))
 
+head.addEventListener("click", () => head.classList.toggle("rotate"))
+
+document.querySelector(".credits small").addEventListener("click",() => reorder(false))
 

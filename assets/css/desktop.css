@@ -75,6 +75,10 @@
 		order: initial;
 	}
 
+	#palette>div.selected{
+	border-width: 7px;
+}
+
 	.eye{
 		width: 35px;
 		height: 35px;

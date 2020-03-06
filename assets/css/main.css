@@ -7,6 +7,19 @@ body{
 	display: none;
 }
 
+.credits{
+	position: fixed;
+	bottom: 1em;
+	text-align: center;
+	color: lightsteelblue;
+	width: 100vw;
+	font-weight: bold;
+}
+
+.credits small{
+	cursor: pointer;
+}
+
 .container{
 	display: grid;
 	grid-template: 
@@ -101,7 +114,7 @@ body{
 }
 
 #palette>div.selected{
-	border: 2px dashed gray;
+	border: 3px ridge white;
 }
 
 #palette .close{
