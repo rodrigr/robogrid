@@ -113,7 +113,7 @@ body{
 	box-sizing: border-box;
 }
 
-#palette>div.selected{
+#palette>div.selected, #micro.selected{
 	border: 3px ridge white;
 }
 
@@ -122,6 +122,26 @@ body{
 	font-weight: bold;
 	color: white;
 	text-align: center;
+	cursor: pointer;
+}
+
+#micro{
+	background-image: url("../img/micro.png");
+	background-color: gray;
+	background-size: contain;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#color-ask{
+	background-image: url("../img/question.png");
+	background-color: gray;
+	background-size: contain;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
 	cursor: pointer;
 }
 

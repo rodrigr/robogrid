@@ -1,3 +1,10 @@
+/*=================
+===================
+Constants
+===================
+=================*/
+
+
 const head = document.querySelector("#head")
 const neck = document.querySelector("#neck")
 const body = document.querySelector("#body")
@@ -14,11 +21,21 @@ const leftFoot = document.querySelector("#left-foot")
 const rightFoot = document.querySelector("#right-foot")
 const feet = document.querySelectorAll(".foot")
 const colorWheel = document.querySelector("#color-wheel")
+const micro = document.querySelector("#micro")
+const colorAsk = document.querySelector("#color-ask")
+let styles = []
+
+/*=================
+===================
+Functions
+===================
+=================*/
+
 
 function paint(event){
 
 	if(event){
-		document.querySelector("#palette div.selected").classList.remove("selected")
+		(document.querySelector("#palette div.selected") || document.querySelector("span.selected")).classList.remove("selected")
 		event.target.classList.add("selected")
 	}
 	
@@ -133,8 +150,6 @@ function entrance(){
 
 entrance()
 
-let styles = []
-
 function reorder(backwards){
 
 	let desktop = window.innerWidth >= 992
@@ -142,7 +157,7 @@ function reorder(backwards){
 	let title = document.querySelector("#title1")
 	let parentSize = !desktop ? title.offsetWidth : title.offsetHeight
 	
-	let word = backwards ? ["R","O","B","O","G","R","I","D"] : ["BY","R","O","D","R","I","G","R"]
+	let word = backwards ? ["R","O","B","O","G","R","I","D"] : ["by","R","O","D","R","I","G","R"]
 	
 	styles.forEach(e => document.querySelector("head").removeChild(e))
 	document.querySelectorAll("#title1 span").forEach(e => e.className = "")
@@ -184,7 +199,21 @@ function reorder(backwards){
 			if(!first){
 				childI.innerText = word[i - 1]
 				childJ.innerText = word[j - 1]
-			}
+				
+				if(!backwards){
+					title.children[0].style.fontSize = !desktop ? "2em" : "3em"
+					title.children[0].style.height = title.children[1].offsetHeight + "px"
+					title.children[0].style.display = "flex"
+					title.children[0].style.alignItems = "flex-end"
+					title.children[0].style.justifyContent = "center"
+				}else{
+					title.children[0].style.fontSize = !desktop ? "2.5em" : "3.4em"
+					title.children[0].style.height = ""
+					title.children[0].style.display = "inline-block"
+					title.children[0].style.alignItems = ""
+					title.children[0].style.justifyContent = ""
+				}
+			} 
 			
 			i++
 			j--
@@ -204,6 +233,67 @@ function reorder(backwards){
 	}
 }
 
+function voicePainting(){
+
+	speechRecogn.start()
+
+	micro.style.backgroundColor = 'red'
+
+	speechRecogn.addEventListener('result', event => {
+		
+		
+
+		let color = event.results[0][0].transcript
+		color = color.replace(" ", "")
+		if(grammar.indexOf(color) != -1){
+			colorWheel.dataset.color = color
+			document.querySelectorAll('.background>div')
+				.forEach(div => div.style.backgroundColor = colorWheel.dataset.color)
+
+			micro.classList.add("selected")
+
+			if(document.querySelector("#palette div.selected")){
+				document.querySelector("#palette div.selected").classList.remove("selected")
+			}
+		}else{
+			var utterThis = new SpeechSynthesisUtterance("try again");
+
+			utterThis.voice = synth.getVoices()[5]
+			utterThis.pitch = 0.5
+			utterThis.rate = 1.5
+
+
+			synth.speak(utterThis)
+			
+		}
+		
+
+		
+
+	})
+
+	speechRecogn.addEventListener('end', () => {
+	
+		micro.style.backgroundColor = 'gray'
+		
+	})
+
+	
+}
+
+function myColorIs(event){
+
+	var utterThis = new SpeechSynthesisUtterance("my skin color is " + colorWheel.dataset.color);
+
+	utterThis.voice = synth.getVoices()[5]
+	utterThis.pitch = 0.3
+	utterThis.rate = 2
+
+
+	synth.speak(utterThis)
+
+}
+
 /*=================
 ===================
 Event Handling
@@ -212,7 +302,7 @@ Event Handling
 
 
 
-document.querySelector('#color-wheel').addEventListener("change",palette)
+colorWheel.addEventListener("change",palette)
 
 document.querySelectorAll("#palette>div").forEach(e => e.addEventListener("click",paint))
 
@@ -235,4 +325,8 @@ document.querySelector("#dance").addEventListener("change", event => event.targe
 head.addEventListener("click", () => head.classList.toggle("rotate"))
 
 document.querySelector(".credits small").addEventListener("click",() => reorder(false))
+
+micro.addEventListener('click', voicePainting)
+
+colorAsk.addEventListener('click', myColorIs)
 

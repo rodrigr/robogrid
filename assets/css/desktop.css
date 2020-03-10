@@ -75,6 +75,11 @@
 		order: initial;
 	}
 
+	#micro,#color-ask{
+		width: 50px;
+		height: 50px;
+	}
+
 	#palette>div.selected{
 	border-width: 7px;
 }
