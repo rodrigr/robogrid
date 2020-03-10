@@ -24,6 +24,7 @@ const colorWheel = document.querySelector("#color-wheel")
 const micro = document.querySelector("#micro")
 const colorAsk = document.querySelector("#color-ask")
 let styles = []
+let warningLevel = 3
 
 /*=================
 ===================
@@ -68,6 +69,7 @@ function palette(){
 function walk(){
 	document.querySelectorAll(".arm,.hand,.leg,.foot").forEach(e => e.classList.add("upAndDown"))
 	document.querySelectorAll("#right-arm,#right-hand,#left-leg,#left-foot").forEach(e => e.classList.add("delay"))
+
 }
 
 function blink(){
@@ -83,6 +85,7 @@ function eat(){
 }
 
 function greet(){
+
 	document.querySelector("#left-hand").classList.add("hide")
 	document.querySelector("#left-arm").classList.add("leftLift")
 	let style = document.createElement('STYLE')
@@ -90,6 +93,8 @@ function greet(){
 		background-color: ${document.querySelector("#left-hand").style.backgroundColor}
 	}`
 	document.querySelector("head").appendChild(style)
+
+	
 }
 
 function jump(){
@@ -151,6 +156,9 @@ function entrance(){
 entrance()
 
 function reorder(backwards){
+
+	if(!backwards)
+		speak()
 
 	let desktop = window.innerWidth >= 992
 
@@ -256,14 +264,7 @@ function voicePainting(){
 				document.querySelector("#palette div.selected").classList.remove("selected")
 			}
 		}else{
-			var utterThis = new SpeechSynthesisUtterance("try again");
-
-			utterThis.voice = synth.getVoices()[5]
-			utterThis.pitch = 0.5
-			utterThis.rate = 1.5
-
-
-			synth.speak(utterThis)
+			speak("try again")
 			
 		}
 		
@@ -283,15 +284,26 @@ function voicePainting(){
 
 function myColorIs(event){
 
-	var utterThis = new SpeechSynthesisUtterance("my skin color is " + colorWheel.dataset.color);
+	speak("my skin color is " + colorWheel.dataset.color);
 
-	utterThis.voice = synth.getVoices()[5]
-	utterThis.pitch = 0.3
-	utterThis.rate = 2
+	
 
+}
+
+let intro = "hi i am Robogrid, an artificial intelligence created by rodriGR. You can change my skin color and interact with me"
+
+function speak(input = intro, voice = 5, lang = 'en-US', pitch = 0.3, rate = 1){
+	var utterThis = new SpeechSynthesisUtterance(input);
+	utterThis.voice = synth.getVoices()[voice]
+	utterThis.pitch = pitch
+	utterThis.rate = rate
+	utterThis.lang = lang
 
 	synth.speak(utterThis)
 
+	utterThis.addEventListener("start", eat)
+
+	utterThis.addEventListener("end", () => stop(["shrinkUp"]))
 }
 
 /*=================
@@ -322,7 +334,22 @@ document.querySelector("#jump").addEventListener("change", event => event.target
 
 document.querySelector("#dance").addEventListener("change", event => event.target.checked ? dance() : stop(["leftLift","rightLift","hide"]))
 
-head.addEventListener("click", () => head.classList.toggle("rotate"))
+head.addEventListener("click", () => {
+
+	head.classList.toggle("rotate")
+	if(head.classList.contains("rotate")){
+		speak("Hey! Is it fun to see my head spinning?. Please click my head again to make it stop!")
+		warningLevel --
+	}else{
+		if(warningLevel == 2)
+			speak("Thanks!")
+		else if(warningLevel == 1)
+			speak("Thanks. Don't you dare to fool around with me again. I could kill you in a matter of seconds")
+		else
+			speak("Ok. Your entire existence is about to end.")
+	}
+	
+})
 
 document.querySelector(".credits small").addEventListener("click",() => reorder(false))
 
